@@ -3,12 +3,12 @@ from models.productdownload import ProductDownloader
 from models.categorydownloader import CategoryDownloader
 
 from bdd.connection import Connection
-from bdd.dbwrite import DbWrite
+from bdd.dbcreate import DbCreate
 
 auth = Connection()
 auth.connect()
 
-create_db = DbWrite(auth)
+create_db = DbCreate(auth)
 create_db.create_database()
 create_db.create_table()
 
