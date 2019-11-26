@@ -10,4 +10,4 @@ class Category:
         return len(self.products)
     
     def __repr__(self):
-        return f"{self.name}"
+        return f"Category({self.name})"
