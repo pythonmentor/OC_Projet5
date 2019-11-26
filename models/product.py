@@ -27,4 +27,4 @@ class Product:
         return is_valid
 
     def __repr__(self):
-        return f"{self.product_name_fr}"
+        return f"Product({self.product_name_fr})"

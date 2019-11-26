@@ -38,4 +38,4 @@ class ProductDownloader:
         print(products)
 
 test = ProductDownloader()
-test.get_products_by_category(0, 'pizzas')
+test.get_products_by_category(5, 'pizzas')

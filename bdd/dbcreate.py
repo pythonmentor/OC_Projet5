@@ -1,3 +1,5 @@
+import mysql.connector
+
 
 class DbCreate:
 
@@ -20,41 +22,32 @@ class DbCreate:
         create_query = """
                         CREATE TABLE IF NOT EXISTS `openfood`.`category` (
                         id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
-                        name VARCHAR(100) NOT NULL,            
+                        name VARCHAR(100) NOT NULL UNIQUE,            
                         PRIMARY KEY (id))
                         """
+
         cursor.execute(create_query)
 
-        create_query = """
-                        CREATE TABLE IF NOT EXISTS `openfood`.`store` ( 
-                        id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
-                        name VARCHAR(100) NOT NULL,                                                
-                        PRIMARY KEY (id)
-                        );                        
-                        """
-        cursor.execute(create_query)
 
         create_query = """
                         CREATE TABLE IF NOT EXISTS `openfood`.`product` ( 
-                        id INT UNSIGNED NOT NULL,
+                        id BIGINT UNSIGNED NOT NULL,
                         id_category SMALLINT UNSIGNED NOT NULL,                                                
-                        product_name_fr VARCHAR(100) NOT NULL,                        
-                        brands VARCHAR(80) NOT NULL,
-                        id_stores SMALLINT UNSIGNED NOT NULL,
+                        product_name_fr VARCHAR(500) NOT NULL,                        
+                        brands VARCHAR(200) NOT NULL,
+                        stores VARCHAR(200) NOT NULL,
                         nutrition_grade_fr VARCHAR(10) NOT NULL,
                         PRIMARY KEY (id),
                         CONSTRAINT `fk_id_category`
-                            FOREIGN KEY (`id_category`) REFERENCES `category` (`id`),
-                        CONSTRAINT `fk_id_stores`
-                            FOREIGN KEY (`id_stores`) REFERENCES `store` (`id`)
-                        );                        
+                            FOREIGN KEY (`id_category`) REFERENCES `category` (`id`)                        
+                        ); 
                         """
         cursor.execute(create_query)
 
         create_query = """
                         CREATE TABLE IF NOT EXISTS `openfood`.`favorite` (
-                        id_compared INT UNSIGNED NOT NULL,
-                        id_result INT UNSIGNED NOT NULL,
+                        id_compared BIGINT UNSIGNED NOT NULL,
+                        id_result BIGINT UNSIGNED NOT NULL,
                         PRIMARY KEY (id_compared),
                         CONSTRAINT `fk_id_compared` 
                             FOREIGN KEY (`id_compared`) REFERENCES `product` (`id`),
