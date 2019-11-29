@@ -10,22 +10,24 @@ from bdd.dbreading import DbReading
 auth = Connection()
 auth.connect()
 
-"""
+
+# Creation de la bdd, creation des tables
 create_db = DbCreate(auth)
 create_db.create_database()
 create_db.create_table()
 
+# telecharge les categories puis les ranges 
 category = CategoryDownloader()
 all_categories = category.get_category()
 
 add_db = DbAdd(auth)
-
 # Ajoute les categories a la bdd
 add_db.add_category(all_categories)
 add_db.add_product(all_categories)
-"""
 
+"""
 # Lecture de la bdd
 db_read = DbReading(auth)
 db_read.get_all_categories()
 db_read.get_category_products(4)
+"""
