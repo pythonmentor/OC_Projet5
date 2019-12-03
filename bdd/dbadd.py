@@ -35,10 +35,15 @@ class DbAdd:
                     continue
 
                 for store in product.stores.split(","):                    
-                    query = "INSERT INTO openfood.store (name) VALUES (%s) ON DUPLICATE KEY UPDATE id=LAST_INSERT_ID(id), name=name"                    
-                    cursor.execute(query, (store.strip().lower(),))
-                    query = "INSERT INTO openfood.product_has_store (id_store, id_product) VALUES (LAST_INSERT_ID(), %s)"
-                    cursor.execute(query, (product.id,))
+                    try:
+                        query = "INSERT INTO openfood.store (name) VALUES (%s) ON DUPLICATE KEY UPDATE id=LAST_INSERT_ID(id), name=name"                    
+                        cursor.execute(query, (store.strip().lower(),))
+                        query = "INSERT INTO openfood.product_has_store (id_store, id_product) VALUES (LAST_INSERT_ID(), %s)"
+                        cursor.execute(query, (product.id,))
+                    except mysql.connector.errors.IntegrityError:
+                        # Add logging here
+                        
+                        continue
                     
             
             self.connect.commit()
