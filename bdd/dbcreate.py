@@ -58,7 +58,7 @@ class DbCreate:
 
         create_query = """
                         CREATE TABLE IF NOT EXISTS `openfood`.`store` (
-                        id INT UNSIGNED NOT NULL,
+                        id INT UNSIGNED NOT NULL AUTO_INCREMENT,
                         PRIMARY KEY (id),
                         name VARCHAR(100) NOT NULL UNIQUE
                         );
@@ -69,7 +69,7 @@ class DbCreate:
                         CREATE TABLE IF NOT EXISTS `openfood`.`product_has_store` (
                         id_store INT UNSIGNED NOT NULL,
                         id_product BIGINT UNSIGNED NOT NULL,
-                        PRIMARY KEY (id_store),
+                        PRIMARY KEY (id_store, id_product),
                         CONSTRAINT `fk_id_store` 
                             FOREIGN KEY (`id_store`) REFERENCES `store` (`id`),
                         CONSTRAINT `fk_id_product` 

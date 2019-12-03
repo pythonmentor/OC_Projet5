@@ -9,6 +9,8 @@ class DbAdd:
     def add_category(self, all_category):
         mySql_insert_query = """INSERT INTO category (name) VALUES (%s)"""
         cursor = self.connect.create_cursor()
+        cursor.execute('USE openfood')
+
         for category in all_category:
             try:
                 cursor.execute(mySql_insert_query, (category.name,))
@@ -32,4 +34,11 @@ class DbAdd:
                     # Add logging here
                     pass
 
+                for store in product.stores.split(","):
+                    query = "INSERT INTO openfood.store (name) VALUES (%s) ON DUPLICATE KEY UPDATE id=LAST_INSERT_ID(id), name=name"                    
+                    cursor.execute(query, (store.strip().lower(),))
+                    query = "INSERT INTO product_has_store (id_store, id_product) VALUES (LAST_INSERT_ID())"
+                    cursor.execute(query, (store.id_store, store.id_product,))
+                    
+            
             self.connect.commit()

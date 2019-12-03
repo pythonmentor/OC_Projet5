@@ -16,7 +16,7 @@ class ProductDownloader:
             "tagtype_0": "categories",
             "tag_contains_0": "contains",
             "tag_0": category,
-            "page_size": 1000
+            "page_size": 20
             }
 
         reponse = requests.get(self.url, params=parametres)
