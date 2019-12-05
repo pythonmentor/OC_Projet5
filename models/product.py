@@ -2,7 +2,7 @@ from settings.settings import mots_clef
 
 
 class Product:
-    """"""
+    """Class that contains product information"""
     
     def __init__(self, **article):
         self.product_name_fr = article['product_name_fr']

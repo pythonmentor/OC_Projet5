@@ -1,7 +1,7 @@
 
 
 class Category:
-    """"""
+    """Class that contains the information of a category"""
     
     def __init__(self):
         self.name = ""
