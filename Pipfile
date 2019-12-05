@@ -9,6 +9,7 @@ autopep8 = "*"
 [packages]
 mysql-connector-python = "*"
 requests = "*"
+flake8 = "*"
 
 [requires]
 python_version = "3.7"
