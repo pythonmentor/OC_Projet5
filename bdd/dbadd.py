@@ -1,12 +1,14 @@
 import mysql.connector
 
 class DbAdd:
+    """Add data class in the db"""
     
     def __init__(self, connection):
         self.connect = connection
     
 
     def add_category(self, all_category):
+        """Adding categories in the db"""
         mySql_insert_query = """INSERT INTO category (name) VALUES (%s)"""
         cursor = self.connect.create_cursor()
         cursor.execute('USE openfood')
@@ -20,6 +22,7 @@ class DbAdd:
                 pass
 
     def add_product(self, all_category):
+        """Add all the data of a product in the db"""
         mySql_insert_query = """INSERT INTO product (product_name_fr, nutrition_grade_fr, id, brands, id_category) VALUES (%s, %s, %s, %s, %s)"""
         cursor = self.connect.create_cursor()
         for category in all_category:

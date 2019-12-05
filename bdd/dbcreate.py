@@ -2,11 +2,13 @@ import mysql.connector
 
 
 class DbCreate:
-
+    """Db creation class"""
+    
     def __init__(self, connection):
         self.connect = connection
 
     def create_database(self):
+        """Method of creating db"""
         cursor = self.connect.create_cursor()
         create_query = """
                         CREATE DATABASE IF NOT EXISTS openfood CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -15,6 +17,7 @@ class DbCreate:
         result = cursor.execute(create_query)
 
     def create_table(self):
+        """Db table creation method"""
         cursor = self.connect.create_cursor()
 
         cursor.execute("USE `openfood`")

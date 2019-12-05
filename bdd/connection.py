@@ -2,14 +2,18 @@ import mysql.connector
 from mysql.connector import Error
 
 class Connection:
-     
+    """Class connection db""" 
+    
     def __init__(self):
+        """Connection information"""
+        
         self.host = 'localhost'
         self.database ='openfood'
         self.user = 'root'
         self.password = ''
 
     def connect(self):
+        """Connection method"""
         try:
             self.connection = mysql.connector.connect(
                 host=self.host, 
