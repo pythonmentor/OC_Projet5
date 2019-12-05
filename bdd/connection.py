@@ -10,7 +10,7 @@ class Connection:
         self.host = 'localhost'
         self.database ='openfood'
         self.user = 'root'
-        self.password = 'rhaco77450'
+        self.password = '#####'
 
     def connect(self):
         """Connection method"""
