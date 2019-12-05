@@ -4,10 +4,13 @@ from models.productdownload import ProductDownloader
 from settings.settings import mots_clef, liste_de_catégories
 
 class CategoryDownloader:
+    """Download the categories"""
+    
     def __init__(self):
         pass
     
     def get_category(self):
+        """Add the categories to the list"""
         all_category = []
         for category in liste_de_catégories:
             cat = Category()

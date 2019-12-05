@@ -5,11 +5,14 @@ from .product import Product
 
 
 class ProductDownloader:
+    """Class who downloads the products"""
+    
     def __init__(self):
         self.url = url
 
     def product_by_category(self, category):
-
+        """Search parameter in the API"""
+        
         parametres = {
             "action": "process",
             "json": 1,
@@ -24,6 +27,7 @@ class ProductDownloader:
 
     
     def filter_product(self, product_list):
+        """Add products sorted to the list"""
         produits_triés = []
         for article in product_list['products']:
             if Product.is_valid(article):

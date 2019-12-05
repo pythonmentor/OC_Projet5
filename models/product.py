@@ -2,6 +2,8 @@ from settings.settings import mots_clef
 
 
 class Product:
+    """"""
+    
     def __init__(self, **article):
         self.product_name_fr = article['product_name_fr']
         self.stores = article['stores']
@@ -11,6 +13,7 @@ class Product:
     
     @classmethod
     def is_valid(cls, article):
+        """Method of product validation"""
         is_valid = True
         for mot in mots_clef:
       
