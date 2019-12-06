@@ -6,5 +6,5 @@ liste_de_catégories = ['pizzas', 'fromages', 'biscuits', 'gâteaux', 'yaourts']
 
 host = 'localhost'
 database = 'openfood'
-user = 'root'
-password = 'rhaco77450'
+user = ''
+password = ''
